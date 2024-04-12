@@ -1,3 +1,0 @@
-mongodb+srv://<username>:<password>@cluster0.k0e4pyb.mongodb.net/
-
-

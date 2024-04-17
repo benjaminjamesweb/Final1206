@@ -1,16 +1,12 @@
 const express = require('express');
-
 const app = express();
-
 const PORT = 3000;
-
 const mongoose = require('mongoose');
-
 const userModel = require('./models/users');
-
 require('dotenv').config();
-
 app.use(express.json());
+const UserRoutes = require('./routes/user');
+const path = require('path');
 
 mongoose.connect(process.env.MONGODB_URL).then(() => {
     console.log('Connected');
@@ -18,10 +14,10 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
     console.log(`Error ${error}`);
 });
 
+app.use(express.static(path.join(__dirname, 'frontend')));
+app.use('/api/blog/v1/users', UserRoutes);
 
-app.get('/', (req, res) => {
-    res.send('Hello, Express!');
-});
+
 
 app.get("/users", (req, res) => {
     userModel.find()

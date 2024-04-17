@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <div class="sign-in-section">
+
+        <div class="sign-in-container">
+          <h2 class="sign-in-message">Sign in to your account</h2>
+        </div>
+      
+        <div class="form-section">
+          <form class="form-container" onSubmit="loginUser(event)">
+            <div class="email-field">
+                <input placeholder="Enter your Email" id="email" name="email" type="email" autocomplete="email" required class="form">
+            </div>
+      
+            <div class="password-field">
+                <input placeholder="Enter your Password" id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+      
+            <div class="button-container">
+              <button type="submit" class="submit-button">Sign in</button>
+            </div>
+          </form>
+      
+          <p class="no-account">
+            Don't have an account? <a href="signup.html">Signup</a>
+          </p>
+        </div>
+    </div>
+</body>
+</html>

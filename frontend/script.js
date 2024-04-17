@@ -55,7 +55,7 @@ async function loginUser(event) {
         if (loggedInUserJSON) {
             localStorage.setItem('token', loggedInUserJSON.data.token);
             alert(loggedInUserJSON.message);
-            window.location.href = 'http://localhost:3000/home.html';
+            window.location.href = 'https://final1206.onrender.com/';
 
         }
     } catch(error) {

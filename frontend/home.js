@@ -88,7 +88,7 @@ async function generateAllBlogs(blogsList) {
 function logout(event) {
     event.preventDefault();
     localStorage.removeItem('token');
-    window.location.href = 'https://blogappcst1206.onrender.com';
+    window.location.href = 'https://localhost:3000';
 }
 
 checkIfUserLoggedIn();

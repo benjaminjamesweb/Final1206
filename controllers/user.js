@@ -94,7 +94,8 @@ const LoginUser = async (req, res) => {
 
     const accessToken = jwt.sign({
         email: userExists.email,
-        name: userExists.name
+        name: userExists.name,
+        id: userExists._id
     }, process.env.JWT_SECRET_KEY);
 
     const userData = {

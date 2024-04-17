@@ -6,6 +6,7 @@ const userModel = require('./models/users');
 require('dotenv').config();
 app.use(express.json());
 const UserRoutes = require('./routes/user');
+const BlogRoutes = require('./routes/blog');
 const path = require('path');
 
 mongoose.connect(process.env.MONGODB_URL).then(() => {
@@ -16,6 +17,7 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
 
 app.use(express.static(path.join(__dirname, 'frontend')));
 app.use('/api/blog/v1/users', UserRoutes);
+app.use('/api/v1/user/blogs', BlogRoutes)
 
 
 

@@ -1,5 +1,3 @@
-
-
 async function registerUser(event) {
     event.preventDefault();
     const name = document.getElementById('name').value;
@@ -13,7 +11,7 @@ async function registerUser(event) {
     }
 
     try {
-        const createdUser = await fetch('/api/blog/v1/users/register', {
+        const createdUser = await fetch('/api/purchase/v1/users/register', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -27,7 +25,7 @@ async function registerUser(event) {
             alert(createdUserJSON.message);
         }
     } catch(error) {
-        alert('There was an err!')
+        alert('There was an error.')
     }
 }
 
@@ -42,7 +40,7 @@ async function loginUser(event) {
     }
 
     try {
-        const loggedInUser = await fetch('/api/blog/v1/users/login', {
+        const loggedInUser = await fetch('/api/purchase/v1/users/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -55,10 +53,10 @@ async function loginUser(event) {
         if (loggedInUserJSON) {
             localStorage.setItem('token', loggedInUserJSON.data.token);
             alert(loggedInUserJSON.message);
-            window.location.href = 'https://final1206.onrender.com/home.html';
+            window.location.href = 'http://localhost:3000/home.html';
 
         }
     } catch(error) {
-        alert('There was an err!')
+        alert('There was an error, please refresh and try again.')
     }
 }

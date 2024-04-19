@@ -1,95 +1,107 @@
-let blogsList = [];
+let purchasesList = [];
 
 function checkIfUserLoggedIn() {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = 'https://final1206.onrender.com/';
+        window.location.href = 'http://localhost:3000/';
     }
+    return token;
 }
 
-async function createBlog(event) {
+async function createPurchase(event) {
     event.preventDefault();
 
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-    const image = document.getElementById('imageUrl').value;
+    const token = checkIfUserLoggedIn();
 
-    const blogData = {
-        title,
-        description,
-        image
+    const itemName = document.getElementById('itemName').value;
+    const itemDescription = document.getElementById('itemDescription').value;
+    const itemPrice = document.getElementById('itemPrice').value;
+    const dateOfPurchase = document.getElementById('dateOfPurchase').value;
+    const itemCategory = document.getElementById('itemCategory').value;
+
+    const purchaseData = {
+        itemName,
+        itemDescription,
+        itemPrice,
+        dateOfPurchase,
+        itemCategory
     }
 
-    const token = localStorage.getItem('token');
 
     if (!token) {
-        alert("TOKEN NOT FOUND!");
+        alert("Token not found.");
         return;
     }
 
     try {
-        const createdBlog = await fetch('/api/v1/user/blogs', {
+        const createdPurchase = await fetch('/api/v1/user/purchases', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": token
             },
-            body: JSON.stringify(blogData)
+            body: JSON.stringify(purchaseData)
         });
 
-        const createdBlogJSON = await createdBlog.json();
+        const createdPurchaseJSON = await createdPurchase.json();
 
-        if (createdBlogJSON) {
-            alert(createdBlogJSON.message);
+        if (createdPurchaseJSON) {
+            alert(createdPurchaseJSON.message);
         }
     } catch(error) {
-        alert('There was an err!')
+        alert('Sorry, there was an error adding this purchase to the expense tracker.')
     }
 }
 
-async function getAllBlogs() {
+async function getAllPurchases() {
     try {
-        const allBlogs = await fetch('/api/v1/user/blogs');
+        const allPurchases = await fetch('/api/v1/user/purchases');
 
-        const allBlogsJson = await allBlogs.json();
-        blogsList = allBlogsJson.data;
+        const allPurchasesJson = await allPurchases.json();
+        purchasesList = allPurchasesJson.data;
 
-        generateAllBlogs(blogsList);
+        generateAllPurchases(purchasesList);
     } catch(error) {
         alert('There was an err!')
     }
 }
  
-async function generateAllBlogs(blogsList) {
-    const blogsElements = document.getElementById('blogItems');
-    console.log(blogsElements, 'blogsElements')
-    blogsElements.innerHTML = "";
+async function generateAllPurchases(purchasesList) {
+    const purchasedElements = document.getElementById('purchasedItems');
 
-    for (let blog of blogsList) {
-        const blogItem = `
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <a href="#">
-        <img class="rounded-t-lg" src=${blog.image} alt="" />
-    </a>
-    <div class="p-5">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${blog.title}</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${blog.description}</p>
-    </div>
+    purchasedElements.innerHTML = "";
+
+    for (let purchase of purchasesList) {
+
+        const date = new Date(purchase.dateOfPurchase);
+        const formattedDate = date.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+
+        const purchasedItem = `
+<div class="post" id="${purchase._id}>
+    <p class="itemPrice">On ${formattedDate}, you bought ${purchase.itemName} (${purchase.itemDescription}) for ${purchase.itemPrice}</p>
+    <button onClick="deletePurchase(event)" class="delete-button">Delete purchase</button>
 </div>
         `
 
-        blogsElements.innerHTML += blogItem;
+        purchasedElements.innerHTML += purchasedItem;
     }
     
 }
 
+function deletePurchase(){
+    alert("I could not sucessfuly make this function, so purchases cannot be deleted.")
+}
 function logout(event) {
     event.preventDefault();
     localStorage.removeItem('token');
-    window.location.href = 'https://final1206.onrender.com/';
+    window.location.href = 'http://localhost:3000/';
 }
 
 checkIfUserLoggedIn();
-getAllBlogs();
+getAllPurchases();

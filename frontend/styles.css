@@ -1,0 +1,144 @@
+
+/* CSS copied from: https://devdevout.com/css/css-animated-backgrounds*/
+@keyframes color {
+    0%   { background: #33CCCC; }
+    20%  { background: #33CC36; }
+    40%  { background: #B8CC33; }
+    60%  { background: #FCCA00; }
+    80%  { background: #33CC36; }
+    100% { background: #33CCCC; }
+}
+
+/* CSS copied from: https://devdevout.com/css/css-animated-backgrounds*/
+body {
+    background: #33CCCC; 
+    animation: color 9s infinite linear;
+    text-align: center;
+    padding: 2em;
+}
+
+
+.sign-in-section, .sign-up-section {
+    margin-top: 25vh;
+}
+
+h1, .sign-in-message, .sign-up-message {
+    text-align: center;
+    font-size: 2.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(96, 244, 255);
+}
+
+h1:hover, .sign-in-message:hover, .sign-up-message:hover {
+    color: rgb(236, 96, 255);
+}
+
+
+.email-field input,
+.password-field input,
+.name-field input{
+    width: 50%; 
+    padding: 10px;
+    border: none; 
+    background-color: pink; 
+    margin-bottom: 10px; 
+    border-radius: 5px; 
+}
+
+.email-field input:focus,
+.password-field input:focus {
+    background-color: rgb(116, 255, 116); 
+}
+
+.submit-button, .sign-up-button {
+    background-color: rgb(197, 73, 255); 
+    color: white; 
+    font-size: larger;
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor:grabbing;
+}
+
+.submit-button:hover, .sign-up-button:hover {
+    background-color: #ff21f8;
+}
+
+.no-account, .already-have-account {
+    margin-top: 25vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    color: rgb(255, 105, 29);
+}
+
+a {
+    color: yellow;
+}
+
+
+
+.logout {
+    display: flex;
+    align-self: right;
+    background-color: #ff6464;
+    color: rgb(0, 0, 0); 
+    font-size: larger;
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor:grabbing;
+}
+
+
+label {
+    font-size: larger;
+    color: #ff2121;
+}
+
+input, option, #itemCategory {
+    background-color: #33CCCC;
+}
+
+.create-purchase {
+    margin-top: 30px;
+    background-color: #FCCA00;
+}
+
+
+
+
+.post {
+    background-color: #fb8c8c;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 50px;
+}
+
+
+.homepage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.new-purchase-section {
+    background-color: #FCCA00;
+    border-radius: 30px;
+    margin: 50px;
+    padding: 25px;
+}
+
+.all-purchases-section {
+    background-color: #ff4d01;
+    border-radius: 30px;
+    margin: 50px;
+    padding: 25px;
+}
+
+
+
+
+
+
+
+
+
+

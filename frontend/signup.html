@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -15,15 +16,15 @@
       
           <form class="sign-up-form" onsubmit="registerUser(event)">
 
-            <div>
+            <div class="name-field">
                   <input placeholder="Enter your Name" id="name" name="name" type="text" required>
             </div>
 
-            <div>
+            <div class="email-field">
                 <input placeholder="Enter your Email" id="email" name="email" type="email" autocomplete="email" required>
             </div>
       
-            <div>
+            <div class="password-field">
                 <input placeholder="Enter your Password" id="password" name="password" type="password" autocomplete="current-password" required>
             </div>
       
@@ -32,7 +33,7 @@
             </div>
           </form>
       
-          <p class="message">
+          <p class="already-have-account">
            Already have an account?<a href="index.html">Login</a>
           </p>
         </div>

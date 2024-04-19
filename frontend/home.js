@@ -3,7 +3,7 @@ let purchasesList = [];
 function checkIfUserLoggedIn() {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = 'http://localhost:3000/';
+        window.location.href = 'https://final1206.onrender.com';
     }
     return token;
 }
@@ -100,7 +100,7 @@ function deletePurchase(){
 function logout(event) {
     event.preventDefault();
     localStorage.removeItem('token');
-    window.location.href = 'http://localhost:3000/';
+    window.location.href = 'https://final1206.onrender.com';
 }
 
 checkIfUserLoggedIn();
